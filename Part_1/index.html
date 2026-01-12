@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="mass">Mass:</label>
+    <input type="text" id="mass">
+    <label for="heigh">Heigh:</label>
+    <input type="text" id="heigh">
+    <input type="button" id="calculateBMI" value="calculate BMI" onclick="calculateBMI()" >
+    <label for="result">Result: </label>
+    <input type="text" name="" id="result" readonly >
+    <script>
+        var BMI = 0;
+        var mass = 0;
+        var heigh = 0;
+        function calculateBMI(){
+            mass = (document.getElementById("mass").value);
+            heigh = (document.getElementById("heigh").value);
+            BMI = mass / (heigh*heigh);
+            console.log(BMI);
+            document.getElementById("result").value = BMI.valueOf();
+        }
+    </script>
+</body>
+</html>
