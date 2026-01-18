@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        document.body.append(document.createElement('button'));
+        document.querySelector('button').innerText = 'Answer poll';
+        document.querySelector('button').className = 'poll';
+
+        const poll = {
+            question: 'What is your favourite programing language?',
+            option: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+
+            // Mảng chứa kết quả, khởi tạo 4 phần tử bằng 0: [0,0,0,0]
+            answers: new Array(4).fill(0),
+
+
+            registeranswer() {
+
+                // Tạo chuỗi options và hiển thị prompt
+                const input = Number(
+                    prompt(
+                        `${this.question}\n${this.option.join('\n')}\n(Write your option number)`
+                    )
+                );
+
+                // Validate dữ liệu và cập nhật câu trả lời
+                if (
+                    typeof input === 'number' &&
+                    input < this.answers.length &&
+                    input >= 0
+                ) {
+                    this.answers[input]++;
+
+                    // Hiển thị kết quả ngay sau khi nhập
+                    this.displayResults();
+                    this.displayResults('string');
+                } else {
+                    alert(" Câu trả lời không hợp lệ!");
+                }
+            },
+
+            // Hiển thị kết quả
+            displayResults(type = 'array') {
+                if (type === 'array') {
+                    console.log(this.answers);
+                } else if (type === 'string') {
+                    console.log(`Poll results are ${this.answers.join(', ')}`)
+                }
+            },
+        };
+
+        // Thực thi sự kiện click trên nút bấm
+        document.querySelector('.poll').addEventListener('click', poll.registeranswer.bind(poll));
+
+        // Test dữ liệu cho Task 4
+        poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+        poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
+        poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
+    </script>
+</body>
+
+</html>
