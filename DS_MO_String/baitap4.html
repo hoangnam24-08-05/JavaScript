@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 1 Giao diện
+        document.body.append(document.createElement('textarea'));
+        document.body.append(document.createElement('button'));
+
+        // 2 Chọn phần tử DOM
+        const text = document.querySelector('textarea');
+        const btn = document.querySelector('button');
+        btn.innerText = "Convert";
+
+        // 3 Thực hiện sự kiện click
+        btn.addEventListener('click',function(){
+
+        const rawText = text.value;
+        const rows = rawText.split('\n');
+
+        for(const [i, row] of rows.entries()){
+            if(row.trim() === '') continue;
+            const [first,second] = row.toLowerCase().trim().split('_');
+            const output = `${first}${second.replace(second[0], second[0].toUpperCase())}`;
+            const checks = '✅'.repeat(i + 1);
+            console.log(`${output.padEnd(20)}${checks}`);
+        }
+            
+        })
+
+    </script>
+</body>
+
+</html>
