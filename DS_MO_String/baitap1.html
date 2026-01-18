@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const game = {
+            team1: 'Bayern Munich',
+            team2: 'Borrussia Dortmund',
+            players: [
+                ['Neuer', 'Pavard', 'Martinez', 'Alaba', 'Davies', 'Kimmich', 'Goretzka', 'Coman', 'Muller', 'Gnarby', 'Lewandowski'],
+                ['Burki', 'Schulz', 'Hummels', 'Akanji', 'Hakimi', 'Weigl', 'Witsel', 'Hazard', 'Brandt', 'Sancho', 'Gotze']
+            ],
+            score: '4:0',
+            scored: ['Lewandowski', 'Davies', 'Kimmich', 'Muller'],
+            date : 'Dec 24th, 2005',
+            odds: {
+                team1: 1.5,
+                x: 3.2,
+                team2: 6.0,
+            },
+        };
+
+
+        // 1. Tách danh sách cầu thủ cho từng đội
+        const [players1, players2] = game.players;
+        console.log("Task 1");
+        console.log(players1,players2);
+        // 2. Tách thủ môn và các cầu thủ còn lại cho đội 1
+        const [gk,...others] = players1;
+        console.log("Task 2");
+        console.log("GK: ", gk);
+        console.log("The Other Players: ", others);
+        // 3. Tạo mảng tất cả cầu thủ của cả hai đội
+        const allPlayers = [...players1,...players2];
+        console.log("Task 3");
+        console.log(allPlayers);
+        // 4. Tạo mảng cầu thủ của đội 1 sau khi thêm 3 cầu thủ mới
+        const playersFinal = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+        console.log("Task 4");
+        console.log(playersFinal)
+        // 5. Tách các tỷ lệ cược từ đối tượng odds
+        const {team1, x:draw, team2} = game.odds;
+        console.log("Task 5");
+        console.log("Team 1: " + team1 +", Draw: " + draw + ", Team 2: " + team2);
+        // 6. Viết hàm in số bàn thắng và tên cầu thủ ghi bàn
+        const printGoals = function(...players){
+            console.log(`${players.length} goals were scored by:`);
+            for(const player of players){
+                console.log(player);
+            }
+        }
+        console.log("task 6");
+        printGoals(...game.scored);
+        // 7. In đội thắng (không dùng if/else hay ternary)
+        console.log("Task 7");
+        team1 < team2 && console.log("Team 1 is more opotunistic to win")
+        team1 > team2 && console.log("Team 2 is more opotunistic to win")
+    </script>
+</body>
+</html>
