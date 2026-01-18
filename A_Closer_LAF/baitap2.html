@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // task 1
+        document.body.append(document.createElement('h1'));
+        document.querySelector('h1').innerText = 'Hello World!';
+        (function () {
+            const header = document.querySelector('h1');
+            header.style.color = 'red'; // Ban đầu màu đỏ
+            // Thêm sự kiện click vào body
+            document.querySelector('body').addEventListener('click', function () {
+                header.style.color = 'blue';
+            });
+        })();
+    </script>
+</body>
+
+</html>
